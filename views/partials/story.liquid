@@ -1,0 +1,36 @@
+<article class="grid-container">
+{% for story in stories %}
+    <section class="test-news">
+        {% if story.cover.id %}
+            <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt="">
+        {% else %}
+            <img src="/afbnotfound.svg" alt="Geen afbeelding beschikbaar">
+        {% endif %}
+
+        {% if story.target_group %}
+            <p class="target">{{ story.target_group }}</p>
+        {% else %}
+            <p class="target">jong & oud</p>
+        {% endif %}
+        <h2>{{ story.title }}</h2>
+        <p>{{ story.intro | truncate: 100 }}</p>
+
+        <time>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+            {% if story.date %}
+                <span>{{ story.date }}</span>
+            {% else %}
+                <span>Datum onbekend</span>
+            {% endif %}
+        </time>
+
+        <form method="POST" action="/collectie">
+            <input type="hidden" name="id" value="{{ story.id }}">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-icon lucide-bookmark"><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"/></svg>
+                <span>Bewaren</span>
+            </button>
+        </form>
+    </section>
+{% endfor %}
+</article>
