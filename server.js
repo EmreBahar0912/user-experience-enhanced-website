@@ -109,6 +109,23 @@ app.get('/zuidoost', async function (request, response) {
    response.render('zuidoost.liquid', {stories: apiResponseJSON.data, page: 'zuidoost'})
 })
 
+app.get('/:slug', async function (request, response) {
+   // Render index.liquid uit de Views map
+   // Geef hier eventueel data aan mee
+   const params = {
+    'filter[district]': 'zuidoost',
+    'fields': 'title, intro, cover.id, body'
+  }
+
+  const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
+  // console.log(apiURL)
+
+  const apiResponse = await fetch(apiURL)
+  const apiResponseJSON = await apiResponse.json()
+  // console.log(personResponseJSON.data)
+   response.render('detail.liquid', {stories: apiResponseJSON.data})
+})
+
 app.get('/zoeken', async function (request, response) {
   const search = request.query.search || ''
 
