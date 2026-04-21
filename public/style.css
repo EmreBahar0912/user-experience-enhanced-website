@@ -440,6 +440,21 @@ li.sort-list:hover {
     }
 }
 
+.intro-detailpage {
+    border-left: 2px solid #545964;
+    padding-inline: 0.5em;
+    padding-block: 0;
+    margin-block: 0.5em;
+}
+
+.body-detailpage p {
+    color: #101828;
+}
+
+.body-detailpage {
+    margin-top: 1.5em;
+}
+
 section.error-state, section.empty-state {
     p {
         text-align: center;
