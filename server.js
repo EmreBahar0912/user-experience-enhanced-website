@@ -42,7 +42,7 @@ app.get('/', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'algemeen',
-    'fields': 'id, title, intro, date,cover.*, target_group'
+    'fields': 'id, title, intro, date,cover.*, target_group, slug'
   }
 
   const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
@@ -63,7 +63,7 @@ app.get('/nieuw-west', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'nieuw-west',
-    'fields': 'title, intro, date, cover.id'
+    'fields': 'title, intro, date, cover.id, slug'
   }
 
   const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
@@ -80,7 +80,7 @@ app.get('/oost', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'oost',
-    'fields': 'title, intro, date, cover.id'
+    'fields': 'title, intro, date, cover.id, slug'
   }
 
   const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
@@ -97,7 +97,7 @@ app.get('/zuidoost', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'zuidoost',
-    'fields': 'title, intro, date, cover.id'
+    'fields': 'title, intro, date, cover.id, slug'
   }
 
   const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
@@ -107,23 +107,6 @@ app.get('/zuidoost', async function (request, response) {
   const apiResponseJSON = await apiResponse.json()
   // console.log(personResponseJSON.data)
    response.render('zuidoost.liquid', {stories: apiResponseJSON.data, page: 'zuidoost'})
-})
-
-app.get('/:slug', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   const params = {
-    'filter[district]': 'zuidoost',
-    'fields': 'title, intro, cover.id, body'
-  }
-
-  const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
-  // console.log(apiURL)
-
-  const apiResponse = await fetch(apiURL)
-  const apiResponseJSON = await apiResponse.json()
-  // console.log(personResponseJSON.data)
-   response.render('detail.liquid', {stories: apiResponseJSON.data})
 })
 
 app.get('/zoeken', async function (request, response) {
@@ -292,6 +275,26 @@ app.post('/collectie/verwijder', async function (request, response) {
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000, als dit ergens gehost wordt, is het waarschijnlijk poort 80
 app.set('port', process.env.PORT || 8000)
+
+app.get('/:slug', async function (request, response) {
+   const slug = request.params.slug
+   // Render index.liquid uit de Views map
+   // Geef hier eventueel data aan mee
+   const params = {
+    'filter[slug]': slug,
+    'fields': 'title, intro, cover.id, body, target_group, slug'
+  }
+
+  const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
+  // console.log(apiURL)
+
+  const apiResponse = await fetch(apiURL)
+  const apiResponseJSON = await apiResponse.json()
+
+  const story = apiResponseJSON.data[0]
+  // console.log(personResponseJSON.data)
+   response.render('detail.liquid', {story: story})
+})
 
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {

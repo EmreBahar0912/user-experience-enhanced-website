@@ -1,6 +1,7 @@
 <article class="grid-container">
 {% for story in stories %}
     <section class="test-news">
+        <a href="/{{ story.slug }}">
         {% if story.cover.id %}
             <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt="">
         {% else %}
@@ -23,6 +24,7 @@
                 <span>Datum onbekend</span>
             {% endif %}
         </time>
+        </a>
 
         <form method="POST" action="/collectie">
             <input type="hidden" name="id" value="{{ story.id }}">
