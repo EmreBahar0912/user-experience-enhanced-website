@@ -2,8 +2,8 @@
 
 {% render 'partials/menu.liquid' %}
 
-<section>
-    <article>
+<section class="grid-container">
+    <article class="test-news">
         {% if story.cover.id %}
             <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt="">
         {% else %}
@@ -11,9 +11,9 @@
         {% endif %}
 
         {% if story.target_group %}
-            <p>{{ story.target_group }}</p>
+            <p class="target">{{ story.target_group }}</p>
         {% else %}
-            <p>jong & oud</p>
+            <p class="target">jong & oud</p>
         {% endif %}
         <h1>{{ story.title }}</h1>
         <p>{{ story.body }}</p>
