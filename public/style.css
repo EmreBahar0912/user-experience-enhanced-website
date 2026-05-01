@@ -385,6 +385,17 @@ li.sort-list:hover {
         text-decoration: none;
     }
 
+    img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    h2 {
+        transition: 0.3s;
+    }
+
     &:hover {
         h2 {
             color: #323568;
@@ -393,13 +404,6 @@ li.sort-list:hover {
         img {
             transform: scale(1.05);
         }
-    }
-
-    img {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        transition: transform 0.3s;
     }
 
     p.target {
