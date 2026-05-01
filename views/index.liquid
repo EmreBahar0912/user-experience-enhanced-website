@@ -2,7 +2,6 @@
 
 {% render 'partials/menu.liquid' %}
 
-<h1>Nieuws</h1>
 <form action="/zoeken" method="GET">
     <input type="search" id="searchbar" name="search" placeholder="Zoek in nieuws..." autocomplete="off">
 </form>
@@ -23,6 +22,8 @@
         </ul>
     </details>
 </div>
+
+<h1>Laatste nieuws</h1>
 
 {% render 'partials/story.liquid', stories: stories %}
 

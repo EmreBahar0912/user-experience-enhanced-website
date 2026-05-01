@@ -38,24 +38,25 @@ app.set('views', './views')
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   const params = {
-    'filter[district]': 'algemeen',
-    'fields': 'id, title, intro, date,cover.*, target_group, slug'
-  }
+  const districts = ['algemeen', 'nieuw-west', 'oost', 'zuidoost']
 
-  const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
-  // console.log(apiURL)
-  // console.log('API URL:', apiURL)
+  const fetches = districts.map(district => {
+    const params = new URLSearchParams({
+      'filter[district][_eq]': district,
+      'filter[date][_nnull]': 'true', 
+      'fields': 'id, title, intro, date, cover.*, target_group, slug',
+      'sort': '-date',
+      'limit': 2
+    })
+    return fetch('https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + params)
+      .then(res => res.json())
+      .then(json => json.data)
+  })
 
-  const apiResponse = await fetch(apiURL)
-  const apiResponseJSON = await apiResponse.json()
-  // console.log('Alle stories:', apiResponseJSON.data.map(s => ({ id: s.id, target_group: s.target_group })))
+  const results = await Promise.all(fetches)
+  const stories = results.flat()
 
-  // console.log('Eerste story:', apiResponseJSON.data[0])
-  // console.log(personResponseJSON.data)
-   response.render('index.liquid', {stories: apiResponseJSON.data})
+   response.render('index.liquid', {stories})
 })
 
 app.get('/nieuw-west', async function (request, response) {
