@@ -379,10 +379,27 @@ li.sort-list:hover {
 }
 
 .test-news {
+    overflow: hidden;
+
+    a {
+        text-decoration: none;
+    }
+
+    &:hover {
+        h2 {
+            color: #323568;
+        }
+
+        img {
+            transform: scale(1.05);
+        }
+    }
+
     img {
         width: 100%;
         aspect-ratio: 16 / 9;
         object-fit: cover;
+        transition: transform 0.3s;
     }
 
     p.target {
