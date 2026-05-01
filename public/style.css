@@ -55,9 +55,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     font-size: 24px;
-    margin: 0.5em;
+    margin: 1rem;
+    margin-block: 1.5em 0;
 }
 
 h2 {
@@ -120,6 +121,10 @@ a, summary {
             stroke: #E8E8E8;
         }
     }
+}
+
+.search-container {
+    margin-top: 1em;
 }
 
 div.sort-filter-container {
@@ -447,8 +452,21 @@ li.sort-list:hover {
 .district-header {
     margin: 1em;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
+
+    a {
+        text-decoration: none;
+        color: #545964;
+    }
+
+    h2::before {
+        content: '';
+        display: block;
+        width: 50%;
+        border-top: 2px solid black;
+        padding-top: 0.5em;
+    }
 }
 
 .intro-detailpage {
