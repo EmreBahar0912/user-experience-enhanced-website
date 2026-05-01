@@ -44,7 +44,7 @@ app.get('/', async function (request, response) {
     const params = new URLSearchParams({
       'filter[district][_eq]': district,
       'filter[date][_nnull]': 'true', 
-      'fields': 'id, title, intro, date, cover.*, target_group, slug',
+      'fields': 'id, title, date, cover.*, target_group, slug',
       'sort': '-date',
       'limit': 2
     })
