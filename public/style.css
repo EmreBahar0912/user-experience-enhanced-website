@@ -444,6 +444,13 @@ li.sort-list:hover {
     }
 }
 
+.district-header {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .intro-detailpage {
     border-left: 2px solid #545964;
     padding-inline: 0.5em;

@@ -1,5 +1,4 @@
 {% render 'partials/head.liquid' %}
-
 {% render 'partials/menu.liquid' %}
 
 <form action="/zoeken" method="GET">
@@ -24,7 +23,16 @@
 </div>
 
 <h1>Laatste nieuws</h1>
-
-{% render 'partials/story.liquid', stories: stories %}
+{% for district in storiesByDistrict %}
+  <section>
+    {% unless district[0] == 'algemeen' %}
+      <div class="district-header">
+        <h2>{{ districtLabels[district[0]] }}</h2>
+        <a href="/{{ district[0] }}">Bekijk alle artikelen</a>
+      </div>
+    {% endunless %}
+    {% render 'partials/story.liquid', stories: district[1] %}
+  </section>
+{% endfor %}
 
 {% render 'partials/foot.liquid' %}

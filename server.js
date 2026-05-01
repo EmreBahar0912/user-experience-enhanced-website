@@ -54,9 +54,22 @@ app.get('/', async function (request, response) {
   })
 
   const results = await Promise.all(fetches)
-  const stories = results.flat()
 
-   response.render('index.liquid', {stories})
+  const storiesByDistrict = {
+    algemeen: results[0],
+    'nieuw-west': results[1],
+    oost: results[2],
+    zuidoost: results[3]
+  }
+
+  const districtLabels = {
+  algemeen: 'Algemeen',
+  'nieuw-west': 'Nieuw-West',
+  oost: 'Oost',
+  zuidoost: 'Zuidoost'
+}
+
+   response.render('index.liquid', {storiesByDistrict, districtLabels})
 })
 
 app.get('/nieuw-west', async function (request, response) {
