@@ -18,6 +18,10 @@
     src: url(/arial.ttf);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 body {
     background-color: light-dark(#fff, #1E1E1E);
 
