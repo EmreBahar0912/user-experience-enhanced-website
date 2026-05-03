@@ -77,6 +77,8 @@ app.get('/nieuw-west', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'nieuw-west',
+    'filter[date][_gte]': '2025-01-01',
+    'filter[date][_lte]': '2025-12-31',
     'fields': 'title, intro, date, cover.id, slug'
   }
 
@@ -94,6 +96,8 @@ app.get('/oost', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'oost',
+    'filter[date][_gte]': '2025-01-01',
+    'filter[date][_lte]': '2025-12-31',
     'fields': 'title, intro, date, cover.id, slug'
   }
 
@@ -111,6 +115,8 @@ app.get('/zuidoost', async function (request, response) {
    // Geef hier eventueel data aan mee
    const params = {
     'filter[district]': 'zuidoost',
+    'filter[date][_gte]': '2025-01-01',
+    'filter[date][_lte]': '2025-12-31',
     'fields': 'title, intro, date, cover.id, slug'
   }
 
