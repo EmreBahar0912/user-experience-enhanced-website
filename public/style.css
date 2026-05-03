@@ -551,6 +551,7 @@ section.simple-articles-container {
     margin-block: 0 3.5em;
 
     article.simple-article {
+        position: relative;
         border: 2px solid black;
         display: flex;
         height: 8em;
@@ -585,6 +586,24 @@ section.simple-articles-container {
                     @media (prefers-color-scheme: dark) {
                         color: #A6ABB5;
                     }
+                }
+            }
+        }
+
+        form {
+            position: absolute;
+            right: 0.5rem;
+            bottom: 0.5rem;
+
+            button {
+                border-radius: 8px;
+                padding: 0.3em;
+                background-color: #C0392B;
+                color: white;
+                border: none;
+
+                &:hover {
+                    background-color: #A93226;
                 }
             }
         }
