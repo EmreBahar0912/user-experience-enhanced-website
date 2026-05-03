@@ -18,8 +18,17 @@
         {% endif %}
 
         <h1 class="h1-detailpage">{{ story.title }}</h1>
-        <p class="intro-detailpage">{{ story.intro }}</p>
-        <div class="body-detailpage">{{ story.body }}</div>
+        {% if story.intro %}
+            <p class="intro-detailpage">{{ story.intro }}</p>
+        {% else %}
+            <p class="intro-detailpage">De Buurtcampus is een plek in de wijk waar bewoners, organisaties en professionals elkaar ontmoeten, samenwerken en van elkaar leren.</p>
+        {% endif %}
+
+        {% if story.body %}
+            <div class="body-detailpage">{{ story.body }}</div>
+        {% else %}
+            <div class="body-detailpage">In de Buurtcampus werken we samen aan een sterkere wijk. We bieden ruimte aan initiatieven van bewoners, organisaties en professionals die zich inzetten voor de buurt. Of je nu een cursus wilt volgen, een activiteit wilt organiseren of gewoon wilt aansluiten bij wat er speelt - bij de Buurtcampus ben je welkom. We geloven dat een buurt sterker wordt als mensen elkaar kennen, vertrouwen en ondersteunen. Daarom faciliteren we ontmoeting, uitwisseling en samenwerking op alle niveaus.</div>
+        {% endif %}
     </article>
 </section>
 
