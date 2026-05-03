@@ -30,18 +30,6 @@ body {
     }
 }
 
-body.nieuwwest {
-    background-color: #F4F6EF;
-}
-
-body.oost {
-    background-color: #F0F1F8;
-}
-
-body.zuidoost {
-    background-color: #EDF4F4;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: Arial-reg;
     line-height: 1.2;
