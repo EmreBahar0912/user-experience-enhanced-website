@@ -401,7 +401,7 @@ li.sort-list:hover {
             color: #323568;
         }
 
-        img {
+        img:not(.no-hover) {
             transform: scale(1.05);
         }
     }
@@ -487,6 +487,25 @@ li.sort-list:hover {
         width: 50%;
         border-top: 2px solid black;
         padding-top: 0.5em;
+    }
+}
+
+.go-back-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-block: 1rem 1.5rem;
+    padding: 0;
+    gap: 0.2em;
+    font-size: 15px;
+    color: #101828;
+
+    svg {
+        width: 20px;
+        height: 20px;
     }
 }
 
