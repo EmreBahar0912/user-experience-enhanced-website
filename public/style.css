@@ -13,12 +13,6 @@
     color-scheme: light dark;
 }
 
-@font-face {
-    font-family: Arial-reg;
-    src: url(/arial.ttf);
-    font-display: swap;
-}
-
 @view-transition {
   navigation: auto;
 }
@@ -32,7 +26,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Arial-reg;
+    font-family: Arial, sans-serif;
     line-height: 1.2;
     color: black;
     color: light-dark(black, #E8E8E8);
@@ -59,12 +53,12 @@ h2 {
 }
 
 p {
-    font-family: Arial-reg;
+    font-family: Arial, sans-serif;
     line-height: 1.4;
 }
 
 a, summary {
-    font-family: Arial-reg;
+    font-family: Arial, sans-serif;
 }
 
 .navbar {
