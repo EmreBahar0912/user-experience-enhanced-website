@@ -233,7 +233,7 @@ app.get('/archief-2023', async function (request, response) {
 
   const apiResponse = await fetch(apiURL)
   const apiResponseJSON = await apiResponse.json()
-  console.log(apiResponseJSON) // wat geeft dit terug?
+  // console.log(apiResponseJSON) // wat geeft dit terug?
    response.render('archief2023.liquid', {stories: apiResponseJSON.data})
 })
 
@@ -252,8 +252,26 @@ app.get('/archief-2024', async function (request, response) {
 
   const apiResponse = await fetch(apiURL)
   const apiResponseJSON = await apiResponse.json()
-  console.log(apiResponseJSON) // wat geeft dit terug?
+  // console.log(apiResponseJSON) // wat geeft dit terug?
    response.render('archief2024.liquid', {stories: apiResponseJSON.data})
+})
+
+app.get('/archief-zonder-datum', async function (request, response) {
+   // Render index.liquid uit de Views map
+   // Geef hier eventueel data aan mee
+   const params = {
+    'filter[district][_in]': 'algemeen, nieuw-west, oost, zuidoost',
+    'filter[date][_null]': 'true',
+    'fields': 'title, intro, date, cover.id, slug, id'
+  }
+
+  const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
+  console.log(apiURL)
+
+  const apiResponse = await fetch(apiURL)
+  const apiResponseJSON = await apiResponse.json()
+  // console.log(apiResponseJSON) // wat geeft dit terug?
+   response.render('archiefzd.liquid', {stories: apiResponseJSON.data})
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
