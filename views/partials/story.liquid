@@ -3,7 +3,13 @@
     <section class="test-news">
         <a href="/{{ story.slug }}">
             {% if story.cover.id %}
-                <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt="">
+                <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt=""
+                {% if forloop.index == 1 %}
+                    loading="eager" fetchpriority="high"
+                {% else %}
+                    loading="lazy"
+                {% endif %}
+                >
             {% else %}
                 <img src="/afbnotfound.svg" alt="Geen afbeelding beschikbaar">
             {% endif %}
