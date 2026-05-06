@@ -222,10 +222,10 @@ app.get('/archief-2023', async function (request, response) {
    // Render index.liquid uit de Views map
    // Geef hier eventueel data aan mee
    const params = {
-    'filter[district]': 'zuidoost',
+    'filter[district][_in]': 'algemeen, nieuw-west, oost, zuidoost',
     'filter[date][_gte]': '2023-01-01',
     'filter[date][_lte]': '2023-12-31',
-    'fields': 'title, intro, date, cover.id, slug'
+    'fields': 'title, intro, date, cover.id, slug, id'
   }
 
   const apiURL = 'https://fdnd-agency.directus.app/items/buurtcampuskrant_stories?' + new URLSearchParams(params)
@@ -233,7 +233,7 @@ app.get('/archief-2023', async function (request, response) {
 
   const apiResponse = await fetch(apiURL)
   const apiResponseJSON = await apiResponse.json()
-  // console.log(personResponseJSON.data)
+  console.log(apiResponseJSON) // wat geeft dit terug?
    response.render('archief2023.liquid', {stories: apiResponseJSON.data})
 })
 
