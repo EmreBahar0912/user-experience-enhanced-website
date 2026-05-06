@@ -16,6 +16,7 @@
 @font-face {
     font-family: Arial-reg;
     src: url(/arial.ttf);
+    font-display: swap;
 }
 
 @view-transition {
