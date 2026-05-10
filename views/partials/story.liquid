@@ -6,7 +6,7 @@
                 <picture>
                     <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif">
                     <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp">
-                    <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt=""
+                    <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt="" width="16" height="9"
                     {% if forloop.index == 1 %}
                         loading="eager" fetchpriority="high"
                     {% else %}
@@ -15,7 +15,7 @@
                     >
                 </picture>
             {% else %}
-                <img src="/afbnotfound.svg" alt="Geen afbeelding beschikbaar">
+                <img src="/afbnotfound.svg" alt="Geen afbeelding beschikbaar" width="16" height="9">
             {% endif %}
 
             {% if story.target_group %}
