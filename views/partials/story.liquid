@@ -4,8 +4,19 @@
         <a href="/{{ story.slug }}">
             {% if story.cover.id %}
                 <picture>
-                    <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif">
-                    <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp">
+                    <source type="image/avif" srcset="
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif&width=555 555w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif&width=580 580w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif&width=730 730w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=avif&width=855 855w
+                    " sizes="(max-width: 600px) 555px, (max-width: 1200px) 580px, (max-width: 1500px) 730px, (max-width: 1750px) 855px, 100vw">
+
+                    <source type="image/webp" srcset="
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp&width=555 555w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp&width=580 580w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp&width=730 730w,
+                    https://fdnd-agency.directus.app/assets/{{ story.cover.id }}?format=webp&width=855 855w
+                    " sizes="(max-width: 600px) 555px, (max-width: 1200px) 580px, (max-width: 1500px) 730px, (max-width: 1750px) 855px, 100vw">
                     <img src="https://fdnd-agency.directus.app/assets/{{ story.cover.id }}" alt=""
                     {% if forloop.index == 1 %}
                         loading="eager" fetchpriority="high"
